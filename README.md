@@ -14,3 +14,9 @@ Particles bounce from borders, but there is also friction that slows them down.
 Every launch all particle types get their own **random** color. 
 
 Actually, particles have no radius, they are just points, so radius of circles on the screen can be any value (you can change it from settings.d)
+
+# Building
+On Windows:
+* build.bat - build debug
+* buildr.bat - build release
+* buildravx.bat build release with avx2 support (potencially this could improve perfomance)
