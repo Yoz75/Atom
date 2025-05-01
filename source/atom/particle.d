@@ -68,7 +68,8 @@ struct Particle
             fpoint[2] velocityForCurrent;
 
             //actually this is one thing, but line would be too huge
-            velocityForCurrent = GetDistance(this, particle) * particleInteractionInfo.InteractionStrength;
+            //DON'T USE GETDISTANCE() HERE!!!
+            velocityForCurrent[] = (Position_[] - particle.Position_[]) * particleInteractionInfo.InteractionStrength;
             velocityForCurrent[] /= pow(GetDistance(this, particle), 2);
 
             if(perTypeParticlesCount[particle.Type] > particleInteractionInfo.MaxParticlesCount)                
