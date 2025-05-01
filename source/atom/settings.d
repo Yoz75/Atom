@@ -3,7 +3,8 @@ import atom.aliases;
 
 //Percentage of velocity lost each frame
 fpoint Friction = 0.1;
-fpoint NearbyParticlesDistance = float.infinity;
+fpoint InteractParticlesDistance = float.infinity;
+fpoint NearbyParticlesDistance = 0.1;
 fpoint ParticlesRenderSize = 15;
 //strength 1 os TOO big, so we silently use this value as 1
 fpoint BaseParticleStrength = 0.00000005;

@@ -24,7 +24,7 @@ struct Particle
 {
     public fpoint[2] Position_;
     public fpoint[2] Velocity_;
-    public size_t Type;
+    public const size_t Type;
 
     public this(fpoint[2] position, size_t type)
     {
@@ -53,14 +53,16 @@ struct Particle
         fpoint[2] endVelocity;
         endVelocity[] = 0;
 
-        //count of particles of every type. Index is type.  
-        size_t[size_t] perTypeParticlesCount; //associative array cuz we don't know what types are near cell,
-        //for example near our particle would be several particles of 1st and 5th types, we don't want to do
-        //5 element array 
+        //this was a associative array for less memory pressurem but at some reason that's brakes
+        //"InteractionInfo particleInteractionInfo = ParticleInteractionsTable[Type][particle.Type];" line
+        size_t[] perTypeParticlesCount = new size_t[ParticleInteractionsTable.length];
 
         foreach (Particle particle; nearbyParticles)
         {
-            perTypeParticlesCount[particle.Type]++;
+            if(GetDistance(this, particle) <= NearbyParticlesDistance)
+            {
+                perTypeParticlesCount[particle.Type]++;
+            }
 
             InteractionInfo particleInteractionInfo = ParticleInteractionsTable[Type][particle.Type];
 

@@ -49,8 +49,6 @@ class Renderer
         {            
             int xPos = FromRangeToRange(particle.Position_[0], -XFieldSize, XFieldSize, 0, XRes);
             int yPos = FromRangeToRange(particle.Position_[1], -YFieldSize, YFieldSize, 0, YRes);
-            int nearParticles = cast(int)(XRes * NearbyParticlesDistance);
-            //DrawCircle(xPos, yPos, nearParticles, Color(255, 255, 255, 255));
             DrawCircle(xPos, yPos, ParticlesRenderSize, *Particle2Color[particle.Type]);
         }
 

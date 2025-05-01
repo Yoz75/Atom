@@ -47,7 +47,7 @@ public class Simulation
                 foreach (Particle candidate; Particles)
                 {
                     auto distance = Particle.GetDistance(particle, candidate);
-                    if(distance != 0 && distance <= NearbyParticlesDistance)
+                    if(distance != 0 && distance <= InteractParticlesDistance)
                     {
                         nearbyParticles ~= candidate;
                     }
