@@ -1,0 +1,1 @@
+devenv /debugexe ./bin/atom.exe

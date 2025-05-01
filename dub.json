@@ -1,0 +1,19 @@
+{
+	"authors": [
+		"yoz75"
+	],
+	"copyright": "Copyright © 2025, yoz75",
+	"description": "particles simulation (like atoms lol)",
+	"license": "MIT",
+	"buildTypes": {
+        "release-avx2": {
+            "dflags": ["-O3", "-release", "-boundscheck=off", "--mattr=+avx2", "./source/raylib/include/raylib.c"]
+        },
+		"debug": {
+			"dflags": ["-g", "--mscrtlib=msvcrt", "winmm.lib", "./source/raylib/include/raylib.c"]
+		}
+    },
+	"libs": ["raylibdll"],
+	"targetPath":"./bin",
+	"name": "atom"
+}
