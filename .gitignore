@@ -23,5 +23,6 @@ docs/
 # Code coverage
 *.lst
 
-.pdb
 .vs/
+/bin
+*.pdb
