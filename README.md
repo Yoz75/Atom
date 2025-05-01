@@ -20,3 +20,6 @@ On Windows:
 * build.bat - build debug
 * buildr.bat - build release
 * buildravx.bat build release with avx2 support (potencially this could improve perfomance)
+
+Other OSs:<br>
+Use "dub run" with --build debug/release/release-avx2 or rename .bat files, there is no OS-related things inside, only dub call ¯\(0_0)/¯
