@@ -24,6 +24,6 @@ docs/
 *.lst
 
 .vs/
-/bin
+bin/
 *.pdb
 bin/atom.pdb
