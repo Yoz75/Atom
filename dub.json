@@ -10,7 +10,7 @@
             "dflags": ["-O3", "-release", "-boundscheck=off", "--mattr=+avx2", "./source/raylib/include/raylib.c"]
         },
 		"debug": {
-			"dflags": ["-g", "--mscrtlib=msvcrt", "winmm.lib", "./source/raylib/include/raylib.c"]
+			"dflags": ["-g", "--mscrtlib=msvcrt", "./source/raylib/include/raylib.c"]
 		},
 		"release":
 		{
