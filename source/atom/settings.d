@@ -8,6 +8,7 @@ fpoint ParticlesRenderSize = 15;
 //strength 1 os TOO big, so we silently use this value as 1
 fpoint BaseParticleStrength = 0.00000005;
 //if distance between 2 particlse <= this, they will repel each other
+//currenlty unused, lol
 fpoint MinDistance = 0.001;
 
 fpoint XFieldSize = 1;
