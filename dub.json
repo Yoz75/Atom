@@ -11,6 +11,10 @@
         },
 		"debug": {
 			"dflags": ["-g", "--mscrtlib=msvcrt", "winmm.lib", "./source/raylib/include/raylib.c"]
+		},
+		"release":
+		{
+			"dflags": ["-O3", "-release", "-boundscheck=off", "./source/raylib/include/raylib.c"]
 		}
     },
 	"libs": ["raylibdll"],
