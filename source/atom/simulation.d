@@ -12,11 +12,12 @@ public class Simulation
 
     private Renderer Renderer_;
 
-    public this(size_t particlesCount, size_t particleTypesCount, fpoint maxStrength, size_t maxParticles)
+    public void Setup(size_t particlesCount, size_t particleTypesCount, fpoint maxStrength, size_t maxParticles)
     {        
+        Particles.clear();
+        Renderer_ = new Renderer(800, 600, "wow!", TargetFPS);
         maxStrength *= BaseParticleStrength; //see settings.d
 
-        Renderer_ = new Renderer(800, 600, "wow!", TargetFPS);
         import std.random;
 
         for(size_t i = 0; i < particleTypesCount; i++)
@@ -57,5 +58,11 @@ public class Simulation
 
             Renderer_.Update(Particles);
         }
+
+    }
+
+    public void Cleanup()
+    {
+        destroy(Renderer_);
     }
 }
