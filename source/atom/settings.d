@@ -2,7 +2,7 @@ module atom.settings;
 import atom.aliases;
 
 //Percentage of velocity lost each frame
-fpoint Friction = 0.1;
+fpoint Friction = 0.5;
 fpoint InteractParticlesDistance = float.infinity;
 fpoint NearbyParticlesDistance = 0.1;
 fpoint ParticlesRenderSize = 15;
@@ -16,3 +16,6 @@ fpoint XFieldSize = 1;
 fpoint YFieldSize = 1;
 
 int TargetFPS = 140;
+
+//InitInteractionsTable will write interactions table to console only if type counts <= this value
+size_t MaxTypesWhenWrite = 100;

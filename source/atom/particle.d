@@ -122,6 +122,6 @@ public void InitInteractionsTable(size_t particleTypesCount, fpoint maxStrength,
             info.InteractionStrength = uniform(-maxStrength, maxStrength);
             info.MaxParticlesCount = uniform(0,  maxParticles);
         }
-        writeln(ParticleInteractionsTable[i]);
+        if(particleTypesCount <= MaxTypesWhenWrite) writeln(ParticleInteractionsTable[i]);
     }
 }
