@@ -53,7 +53,7 @@ struct Particle
         fpoint[2] endVelocity;
         endVelocity[] = 0;
 
-        //this was a associative array for less memory pressurem but at some reason that's brakes
+        //this was an associative array for less memory pressure, but at some reason that's brakes
         //"InteractionInfo particleInteractionInfo = ParticleInteractionsTable[Type][particle.Type];" line
         size_t[] perTypeParticlesCount = new size_t[ParticleInteractionsTable.length];
 
