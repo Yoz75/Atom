@@ -2,7 +2,7 @@ module atom.settings;
 import atom.aliases;
 
 //Percentage of velocity lost each frame
-fpoint Friction = 0.5;
+fpoint Friction = 0.00005;
 fpoint InteractParticlesDistance = float.infinity;
 fpoint NearbyParticlesDistance = 0.1;
 fpoint ParticlesRenderSize = 15;
