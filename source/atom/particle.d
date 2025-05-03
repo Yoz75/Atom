@@ -23,24 +23,19 @@ struct InteractionInfo
 struct Particle
 {
     public fpoint[2] Position_;
-    public fpoint[2] Velocity_;
+    public fpoint[2] Velocity;
     public const size_t Type;
 
     public this(fpoint[2] position, size_t type)
     {
         Position_ = position;
-        Velocity_[] = 0;
+        Velocity[] = 0;
         Type = type;
     }
 
     public @property fpoint[2] Position()
     {
         return Position_;
-    }
-
-    public @property fpoint[2] Velocity()
-    {
-        return Velocity_;
     }
 
     public static fpoint GetDistance(Particle left, Particle right)
@@ -85,17 +80,17 @@ struct Particle
         //particles bounce from the border            
 		if(Position_[0] < -XFieldSize || Position_[0] > XFieldSize)
 		{
-			Velocity_[0] = -Velocity_[0];
+			Velocity[0] = -Velocity[0];
 		}
 
 		if(Position_[1] < -YFieldSize || Position_[1] > YFieldSize)
 		{
-			Velocity_[1] = -Velocity_[1];
+			Velocity[1] = -Velocity[1];
 		}
 
-        Velocity_[] += endVelocity[];
-        Velocity[] -=  Velocity_[] * Friction;
-        Position_[] += Velocity_[];
+        Velocity[] += endVelocity[];
+        Velocity[] -=  Velocity[] * Friction;
+        Position_[] += Velocity[];
     }
 }
 
