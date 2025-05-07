@@ -14,13 +14,6 @@
 				"--vgc"
 			]
 		},
-		"debug-cuda": {
-			"dflags": [
-				"-g",
-				"--mscrtlib=msvcrt",
-				"./source/raylib/include/raylib.c"
-			]
-		},
 		"release": {
 			"dflags": [
 				"-O3",
