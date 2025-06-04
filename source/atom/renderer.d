@@ -9,7 +9,7 @@ import raylib;
 class Renderer
 {
     private int XRes, YRes;
-    private Color*[size_t] Particle2Color;
+    private Color[size_t] Particle2Color;
 
     private enum Black = Color(0, 0, 0);
 
@@ -34,7 +34,7 @@ class Renderer
     public void AddParticleType(size_t type)
     {
         import std.format;
-        Color** color = type in Particle2Color;
+        Color* color = type in Particle2Color;
         assert(color is null, format("type %d already added to renderer", type));
 
         Particle2Color[type] = GenerateRandomColor();
@@ -49,14 +49,14 @@ class Renderer
         {            
             int xPos = FromRangeToRange(particle.Position_[0], -XFieldSize, XFieldSize, 0, XRes);
             int yPos = FromRangeToRange(particle.Position_[1], -YFieldSize, YFieldSize, 0, YRes);
-            DrawCircle(xPos, yPos, ParticlesRenderSize, *Particle2Color[particle.Type]);
+            DrawCircle(xPos, yPos, ParticlesRenderSize, Particle2Color[particle.Type]);
         }
 
         raylib.EndDrawing();
    }
 }
 
-private Color* GenerateRandomColor()
+private Color GenerateRandomColor()
 {
     import std.random;
 
@@ -64,5 +64,5 @@ private Color* GenerateRandomColor()
     ubyte g = cast(ubyte) uniform(0, 256);
     ubyte b = cast(ubyte) uniform(0, 256);
 
-    return new Color(r, g, b, 255);
+    return Color(r, g, b, 255);
 }
