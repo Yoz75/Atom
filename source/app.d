@@ -18,6 +18,7 @@ void main()
 	Simulation simulation = new Simulation();
 	while(true)
 	{
+		scope(exit) simulation.Cleanup();
 		writeln("\nAtom simulation start menu. Press ctrl + C to exit.\n");
 		
 		size_t particlesCount = ReadWithPrompt!size_t("write the particles count:");
@@ -28,6 +29,5 @@ void main()
 		simulation.Setup(particlesCount, typesCount, force, maxNearParticles);
 
 		simulation.Start();
-		simulation.Cleanup();
 	}
 }
