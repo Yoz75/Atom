@@ -10,9 +10,6 @@ import std.math;
 //interacts with particle type 5
 InteractionInfo[][] ParticleInteractionsTable; 
 
-//How much nearest particles interact at time.
-//Default value is 2 -- at one time with this particle interact only 1 nearest particle
-size_t InteractParticlesCount = 2;
 
 struct InteractionInfo
 {
