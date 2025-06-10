@@ -52,7 +52,7 @@ class Renderer
             DrawCircle(xPos, yPos, ParticlesRenderSize, Particle2Color[particle.Type]);
         }
 
-        raylib.EndDrawing();
+        EndDrawing();
    }
 }
 
