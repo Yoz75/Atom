@@ -15,8 +15,8 @@ public class Simulation
     public void Setup(size_t particlesCount, size_t particleTypesCount, fpoint maxStrength, size_t maxParticles)
     {        
         Particles.clear();
-        Renderer_ = new Renderer(800, 600, "wow!", TargetFPS);
-        maxStrength *= BaseParticleStrength; //see settings.d
+        Renderer_ = new Renderer(800, 600, "wow!", GSS.TargetFPS);
+        maxStrength *= GSS.BaseParticleStrength; //see settings.d
 
         import std.random;
 
@@ -29,8 +29,8 @@ public class Simulation
         {
             fpoint[2] position;
             
-            position[0] = uniform(-XFieldSize, XFieldSize);
-            position[1] = uniform(-YFieldSize, YFieldSize);
+            position[0] = uniform(-GSS.XFieldSize, GSS.XFieldSize);
+            position[1] = uniform(-GSS.YFieldSize, GSS.YFieldSize);
 
             Particle particle = Particle(position, uniform(0, particleTypesCount));
             Particles.insertFront(particle);
@@ -48,7 +48,7 @@ public class Simulation
                 foreach (Particle candidate; Particles)
                 {
                     auto distance = Particle.GetDistance(particle, candidate);
-                    if(distance != 0 && distance <= InteractParticlesDistance)
+                    if(distance != 0 && distance <= GSS.InteractParticlesDistance)
                     {
                         nearbyParticles ~= candidate;
                     }

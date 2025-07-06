@@ -70,18 +70,18 @@ struct Particle
         }
 
         //particles bounce from the border            
-		if(Position_[0] < -XFieldSize || Position_[0] > XFieldSize)
+		if(Position_[0] < -GSS.XFieldSize || Position_[0] > GSS.XFieldSize)
 		{
 			Velocity[0] = -Velocity[0];
 		}
 
-		if(Position_[1] < -YFieldSize || Position_[1] > YFieldSize)
+		if(Position_[1] < -GSS.YFieldSize || Position_[1] > GSS.YFieldSize)
 		{
 			Velocity[1] = -Velocity[1];
 		}
 
         Velocity[] += endVelocity[];
-        Velocity[] -=  Velocity[] * Friction;
+        Velocity[] -=  Velocity[] * GSS.Friction;
         Position_[] += Velocity[];
     }
 }
@@ -109,6 +109,6 @@ public void InitInteractionsTable(size_t particleTypesCount, fpoint maxStrength,
             info.InteractionStrength = uniform(-maxStrength, maxStrength);
             info.MaxParticlesCount = uniform(0,  maxParticles);
         }
-        if(particleTypesCount <= MaxTypesWhenWrite) writeln(ParticleInteractionsTable[i]);
+        if(particleTypesCount <= GSS.MaxTypesWhenWrite) writeln(ParticleInteractionsTable[i]);
     }
 }
