@@ -1,6 +1,6 @@
 module atom.renderer;
 import atom.particle;
-import atom.settings;
+import atom.settings.config;
 import atom.particle;
 import atom.math;
 import std.container.slist;
@@ -68,9 +68,9 @@ class Renderer
 
         foreach (particle; particles)
         {            
-            int xPos = FromRangeToRange(particle.Position_[0], -GSS.XFieldSize, GSS.XFieldSize, 0, XRes);
-            int yPos = FromRangeToRange(particle.Position_[1], -GSS.YFieldSize, GSS.YFieldSize, 0, YRes);
-            DrawCircle(xPos, yPos, GSS.ParticleRadius, Particle2Color[particle.Type]);
+            int xPos = FromRangeToRange(particle.Position_[0], -GSC.XFieldSize, GSC.XFieldSize, 0, XRes);
+            int yPos = FromRangeToRange(particle.Position_[1], -GSC.YFieldSize, GSC.YFieldSize, 0, YRes);
+            DrawCircle(xPos, yPos, GSC.ParticleRadius, Particle2Color[particle.Type]);
         }
 
         EndDrawing();

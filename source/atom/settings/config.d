@@ -1,14 +1,14 @@
-module atom.settings;
+module atom.settings.config;
 import atom.aliases;
 
 /// Global simulation settings instance.
-SimulationSettings GlobalSimulationSettings;
+SimulationConfig GlobalSimulationConfig;
 
 /// Alias for GlobalSimulationSettings to avoid long names in code.
-alias GSS = GlobalSimulationSettings;
+alias GSC = GlobalSimulationConfig;
 
 /// Simulation settings. Use GlobalSimulationSettings to access it.
-struct SimulationSettings
+struct SimulationConfig
 {
 public:
     ///Percentage of velocity lost each frame

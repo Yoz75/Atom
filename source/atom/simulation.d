@@ -1,6 +1,6 @@
 module atom.simulation;
 import atom.aliases;
-import atom.settings;
+import atom.settings.config;
 import atom.particle;
 import atom.renderer;
 import std.container.slist;
@@ -15,8 +15,8 @@ public class Simulation
     public void Setup(size_t particlesCount, size_t particleTypesCount, fpoint maxStrength, size_t maxParticles)
     {        
         Particles.clear();
-        Renderer_ = new Renderer(800, 600, "wow!", GSS.TargetFPS);
-        maxStrength *= GSS.BaseParticleStrength; //see settings.d
+        Renderer_ = new Renderer(800, 600, "wow!", GSC.TargetFPS);
+        maxStrength *= GSC.BaseParticleStrength; //see settings.d
 
         import std.random;
 
@@ -29,8 +29,8 @@ public class Simulation
         {
             fpoint[2] position;
             
-            position[0] = uniform(-GSS.XFieldSize, GSS.XFieldSize);
-            position[1] = uniform(-GSS.YFieldSize, GSS.YFieldSize);
+            position[0] = uniform(-GSC.XFieldSize, GSC.XFieldSize);
+            position[1] = uniform(-GSC.YFieldSize, GSC.YFieldSize);
 
             Particle particle = Particle(position, uniform(0, particleTypesCount));
             Particles.insertFront(particle);
@@ -48,7 +48,7 @@ public class Simulation
                 foreach (Particle candidate; Particles)
                 {
                     auto distance = Particle.GetDistance(particle, candidate);
-                    if(distance != 0 && distance <= GSS.InteractParticlesDistance)
+                    if(distance != 0 && distance <= GSC.InteractParticlesDistance)
                     {
                         nearbyParticles ~= candidate;
                     }

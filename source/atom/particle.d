@@ -1,6 +1,6 @@
 module atom.particle;
 import atom.aliases;
-import atom.settings;
+import atom.settings.config;
 import std.math;
 
 //global table for every interactions of every particle type.
@@ -70,18 +70,18 @@ struct Particle
         }
 
         //particles bounce from the border            
-		if(Position_[0] < -GSS.XFieldSize || Position_[0] > GSS.XFieldSize)
+		if(Position_[0] < -GSC.XFieldSize || Position_[0] > GSC.XFieldSize)
 		{
 			Velocity[0] = -Velocity[0];
 		}
 
-		if(Position_[1] < -GSS.YFieldSize || Position_[1] > GSS.YFieldSize)
+		if(Position_[1] < -GSC.YFieldSize || Position_[1] > GSC.YFieldSize)
 		{
 			Velocity[1] = -Velocity[1];
 		}
 
         Velocity[] += endVelocity[];
-        Velocity[] -=  Velocity[] * GSS.Friction;
+        Velocity[] -=  Velocity[] * GSC.Friction;
         Position_[] += Velocity[];
     }
 }
@@ -109,6 +109,6 @@ public void InitInteractionsTable(size_t particleTypesCount, fpoint maxStrength,
             info.InteractionStrength = uniform(-maxStrength, maxStrength);
             info.MaxParticlesCount = uniform(0,  maxParticles);
         }
-        if(particleTypesCount <= GSS.MaxTypesWhenWrite) writeln(ParticleInteractionsTable[i]);
+        if(particleTypesCount <= GSC.MaxTypesWhenWrite) writeln(ParticleInteractionsTable[i]);
     }
 }
