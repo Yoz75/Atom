@@ -27,10 +27,11 @@ private T ReadWithPrompt(T)(tstring prompt)
 /// Params:
 ///   prompt = text prompt
 ///   yesAnswer = user "yes" answer
-private void AskAboutEditConfig(TConfig, alias configInstance)(tstring prompt, tstring yesAnswer = "y")
+/// Returns: true of user answered yesAnswer, false in other case
+private bool AskAboutEditConfig(TConfig, alias configInstance)(tstring prompt, tstring yesAnswer = "y")
 {
     bool wantRedactConfig = ReadWithPrompt!tstring(prompt) == yesAnswer;
-    if(!wantRedactConfig) return;
+    if(!wantRedactConfig) return false;
     
     import std.traits : hasUDA, getUDAs;
     static foreach (i, name; FieldNameTuple!TConfig)
@@ -55,6 +56,8 @@ private void AskAboutEditConfig(TConfig, alias configInstance)(tstring prompt, t
             }
         }
     }    
+    
+    return true;
 }
 
 /// Ask user about config saving (save config if user answer == yesAnswer)
@@ -85,12 +88,12 @@ public struct ConfigManager
         LoadConfigWithFeedback!(SimulationConfig, GSC)(SimulationConfigPath);
         LoadConfigWithFeedback!(SimulationStartInfoConfig, GSIC)(SimulationStartInfoConfigPath);
 
-        AskAboutEditConfig!(SimulationConfig, GSC)("Do you want to edit simulation config? (y/n)");
-        AskAboutSaveConfig!(SimulationConfig, GSC)(SimulationConfigPath, "Do you want to save config? (y/n)");
+        if(AskAboutEditConfig!(SimulationConfig, GSC)("Do you want to edit simulation config? (y/n)"))
+            AskAboutSaveConfig!(SimulationConfig, GSC)(SimulationConfigPath, "Do you want to save config? (y/n)");
 
-        AskAboutEditConfig!(SimulationStartInfoConfig, GSIC)("Do you want to edit simulation start info config? (y/n)");
-        AskAboutSaveConfig!(SimulationStartInfoConfig, GSIC)
-            (SimulationStartInfoConfigPath, "Do you want to save config? (y/n)");
+        if(AskAboutEditConfig!(SimulationStartInfoConfig, GSIC)("Do you want to edit simulation start info config? (y/n)"))
+            AskAboutSaveConfig!(SimulationStartInfoConfig, GSIC)
+                (SimulationStartInfoConfigPath, "Do you want to save config? (y/n)");
     }
 
     private bool TryLoadConfig(TConfig, alias configInstance)(tstring filePath)

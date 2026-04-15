@@ -1,0 +1,6 @@
+{
+    "MaxParticlesBeforeReverse": 4,
+    "ParticlesCount": 64,
+    "StrengthMultiplier": 1.0,
+    "TypesCount": 2
+}

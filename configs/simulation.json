@@ -1,0 +1,8 @@
+{
+    "Friction": 5.00000000000000024e-05,
+    "InteractParticlesDistance": 2.0,
+    "MaxTypesWhenWrite": 100,
+    "MinimalParticlesDistance": 0.100000000000000006,
+    "ParticleRadius": 0.0149999999999999994,
+    "TargetFPS": 140
+}

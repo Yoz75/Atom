@@ -2,6 +2,19 @@
 	"authors": [
 		"yoz75"
 	],
+	"license": "MIT",
+	"targetPath": "./bin",
+	"copyright": "Copyright © 2025, yoz75",
+	"name": "atom",
+	"libs": [
+		"raylibdll"
+	],
+	"description": "particles simulation (like atoms lol)",
+	"dependencies": {
+		"raylib-d": "~>5.5.3",
+		"colorize": "~>1.0.5",
+		"jsonizer": "~>0.7.7"
+	},
 	"buildTypes": {
 		"debug": {
 			"dflags": [
@@ -15,8 +28,7 @@
 			"dflags": [
 				"-O3",
 				"-release",
-				"-boundscheck=off",
-				"./source/raylib/include/raylib.c"
+				"-boundscheck=off"
 			]
 		},
 		"release-avx2": {
@@ -24,21 +36,8 @@
 				"-O3",
 				"-release",
 				"-boundscheck=off",
-				"--mattr=+avx2",
-				"./source/raylib/include/raylib.c"
+				"--mattr=+avx2"
 			]
 		}
-	},
-	"copyright": "Copyright © 2025, yoz75",
-	"dependencies": {
-		"colorize": "~>1.0.5",
-		"jsonizer": "~>0.7.7"
-	},
-	"description": "particles simulation (like atoms lol)",
-	"libs": [
-		"raylibdll"
-	],
-	"license": "MIT",
-	"name": "atom",
-	"targetPath": "./bin"
+	}
 }

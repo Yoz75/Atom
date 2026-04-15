@@ -63,6 +63,7 @@ class Renderer
 
    public void Update(SList!Particle particles)
    {
+        float particleRadius = FromRangeToRange(GSC.ParticleRadius, 0, GSC.XFieldSize, 0, XRes);
         BeginDrawing();
         ClearBackground(Black);
 
@@ -70,7 +71,8 @@ class Renderer
         {            
             int xPos = FromRangeToRange(particle.Position_[0], -GSC.XFieldSize, GSC.XFieldSize, 0, XRes);
             int yPos = FromRangeToRange(particle.Position_[1], -GSC.YFieldSize, GSC.YFieldSize, 0, YRes);
-            DrawCircle(xPos, yPos, GSC.ParticleRadius, Particle2Color[particle.Type]);
+
+            DrawCircle(xPos, yPos, particleRadius, Particle2Color[particle.Type]);
         }
 
         EndDrawing();

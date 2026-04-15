@@ -31,7 +31,7 @@ public:
     @AskUser("minimal distance between particles before interaction reverse") fpoint MinimalParticlesDistance = 0.1;
 
     /// Particles radius
-    @AskUser("particles radius (in pixels)") fpoint ParticleRadius = 15;
+    @AskUser("particles radius (0..1 where 1 is full screen)") fpoint ParticleRadius = 0.015;
 
     /// Base interaction strength multiplier
     enum fpoint BaseParticleStrength = 0.00000005;
